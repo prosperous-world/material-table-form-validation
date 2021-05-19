@@ -25,6 +25,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import Box from "@material-ui/core/Box";
 import CreateIcon from '@material-ui/icons/Create';
 import {MoreVert} from "@material-ui/icons";
+import DialogDetail from "./dialogDetail";
 
 //styles...
 const StyledTableCell = withStyles((theme) => ({
@@ -165,7 +166,7 @@ const rows = [
         col5: 4.0
     },
     {
-        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        img: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
         col1: 'Ice cream sandwich',
         col2: 237,
         col3: 9.0,
@@ -173,7 +174,7 @@ const rows = [
         col5: 4.3
     },
     {
-        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        img: "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
         col1: 'Eclair',
         col2: 262,
         col3: 16.0,
@@ -189,7 +190,7 @@ const rows = [
         col5: 4.3
     },
     {
-        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        img: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
         col1: 'Gingerbread',
         col2: 356,
         col3: 16.0,
@@ -240,7 +241,7 @@ function RowMoreIcon(props) {
                 style={{}}
                 className={classes.menuIconButtion}
             >
-               <MoreVert/>
+               <MoreVert color={"primary"}/>
             </IconButton>
             <Popper open={menuOpen} anchorEl={anchorRef.current} role={undefined} className={classes.zIndexTop}
                     transition
@@ -276,6 +277,7 @@ function MyTable() {
     const [selectedMenu, setSelectedMenu] = React.useState("week");
     const [menuOpen, setMenuOpen] = React.useState(false);
     const [searchTerm, setSearchTerm] = useState("");
+    const [curSelectedUser, setCurSelectedUser] = useState(-1);
 
     const [rowData, setRowData] = useState(rows);
 
@@ -303,6 +305,10 @@ function MyTable() {
     const toggelData = (event, flag) => {
         event.preventDefault();
         setSelectedMenu(flag);
+    }
+
+    const closeDialog = () => {
+        setCurSelectedUser(-1);
     }
 
     return (
@@ -362,7 +368,7 @@ function MyTable() {
                             >
                                 <MoreHorizIcon/>
                             </IconButton>
-                            <Popper open={menuOpen} anchorEl={anchorRef.current} role={undefined} transition
+                            <Popper open={menuOpen} anchorEl={anchorRef.current} role={undefined} transition className={classes.zIndexTop}
                                     disablePortal>
                                 {({TransitionProps, placement}) => (
                                     <Grow
@@ -415,8 +421,8 @@ function MyTable() {
                                         align="right">{row.col3}</StyledTableCell>
                                     <StyledTableCell
                                         align="right">
-                                        <IconButton>
-                                            <CreateIcon/>
+                                        <IconButton onClick={()=>setCurSelectedUser(index)}>
+                                            <CreateIcon color={"primary"}/>
                                         </IconButton>
                                         <RowMoreIcon/>
                                     </StyledTableCell>
@@ -429,6 +435,13 @@ function MyTable() {
                         <Pagination count={10} color="primary" style={{display: "inline-block"}}/>
                     </div>
                 </TableContainer>
+                {curSelectedUser != -1 ?
+                    <DialogDetail
+                        closeDialog={closeDialog}
+                        rowData={rows}
+                        selected={curSelectedUser}
+                    />
+                    : ""}
             </Grid>
         </Grid>
     );

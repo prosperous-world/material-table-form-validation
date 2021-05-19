@@ -1,9 +1,10 @@
 import './App.css';
 import React, {useState} from 'react';
-import Button from '@material-ui/core/Button';
 import MyTable from "./components/table";
 import MyForm from "./components/form/formValidate";
-import { makeStyles } from '@material-ui/core/styles';
+import MyTablePagination from './components/table_pagination';
+import {makeStyles} from '@material-ui/core/styles';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,23 +26,24 @@ function App() {
 
     return (
         <div className="App">
-            <div className={classes.root}>
-                <Button variant="contained" color="primary" onClick={() => toggleMode(1)}>
-                    Form
-                </Button>
-                <Button variant="contained" color="primary" onClick={() => toggleMode(2)}>
-                    Table
-                </Button>
-            </div>
-            {curMode == 1 ?
-                <MyForm/>
-                :
-                <MyTable/>
-            }
+            <Router>
+                <Switch>
+                    <Route path="/form">
+                        <MyForm/>
+                    </Route>
+                    <Route path="/table">
+                        <MyTable/>
+                    </Route>
+                    <Route path="/table_pagination">
+                        <MyTablePagination/>
+                    </Route>
+                    <Route path="/">
+                        <MyTablePagination/>
+                    </Route>
+                </Switch>
+            </Router>
         </div>
     );
-
-
 }
 
 export default App;

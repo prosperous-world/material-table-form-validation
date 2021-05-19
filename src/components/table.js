@@ -190,7 +190,7 @@ function MyTable() {
                     </div>
                 </Toolbar>
                 <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="customized table">
+                    <Table search={true} className={classes.table} aria-label="customized table">
                         <TableHead>
                             <TableRow>
                                 <TableCell className={classes.tableHeader}>Column-1</TableCell>

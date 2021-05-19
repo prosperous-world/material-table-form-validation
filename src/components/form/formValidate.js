@@ -37,8 +37,6 @@ const ColorButton = withStyles((theme) => ({
 }))(Button);
 
 function MyForm() {
-
-
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 

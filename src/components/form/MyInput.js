@@ -32,6 +32,7 @@ const useStylesInit = makeStyles((theme) => ({
         transition: theme.transitions.create(['border-color', 'box-shadow']),
         '&:hover': {
             backgroundColor: '#fff',
+            borderColor :theme.palette.primary.main,
         },
         '&$focused': {
             backgroundColor: '#fff',
@@ -102,7 +103,7 @@ function RedditTextField(props) {
             break;
     }
 
-    return <TextField InputProps={{classes, disableUnderline: true}} {...props} />;
+    return <TextField type={'password'} InputProps={{classes, disableUnderline: true}} {...props} />;
 }
 
 

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize:14,
     },
     labelitem:{
-        fontFamily:'"Inter" sans-serif',
+        fontFamily:'Inter, sans-serif',
         color:"#484747",
         fontSize:15,
         fontWeight:500

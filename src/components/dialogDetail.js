@@ -172,7 +172,7 @@ export default function DialogDetail(props) {
                                                             htmlFor="outlined-adornment-password">Email</InputLabel>
                                                         <OutlinedInput
                                                             readOnly
-                                                            value={props.rowData[curPosition].col2}
+                                                            value={props.rowData[curPosition].email}
                                                             id="outlined-adornment-password"
                                                             className={classes.borderRadius_20}
                                                             labelWidth={50}

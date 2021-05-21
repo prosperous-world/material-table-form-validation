@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Grid} from "@material-ui/core";
+import {createMuiTheme, Grid} from "@material-ui/core";
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -26,6 +26,40 @@ import Box from "@material-ui/core/Box";
 import CreateIcon from '@material-ui/icons/Create';
 import {MoreVert} from "@material-ui/icons";
 import DialogDetail from "./dialogDetail";
+//custom theme...
+import InterFont from './inter_font.woff2';
+import {ThemeProvider} from "@material-ui/styles";
+
+
+const interFont = {
+    fontFamily: 'Inter',
+    fontStyle: 'normal',
+    fontDisplay: 'swap',
+    fontWeight: 400,
+    src: `
+    local('Inter'),
+    local('Raleway-Regular'),
+    url(${InterFont}) format('woff2')
+  `,
+};
+
+const myTheme = createMuiTheme({
+    typography: {
+        fontFamily: [
+            'Inter',
+            'sans-serif'
+
+        ].join(','),
+    },
+    overrides: {
+        MuiCssBaseline: {
+            '@global': {
+                '@font-face': [interFont],
+            },
+        },
+    },
+});
+
 
 //styles...
 const StyledTableCell = withStyles((theme) => ({
@@ -58,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
         borderTop: "1px solid #e0e0e0",
     },
     tableHeader: {
-        fontFamily: "sans-serif",
+        fontFamily: "Inter, sans-serif",
         color: "rgb(100,100,100)",
         fontWeight: 600
     },
@@ -141,8 +175,8 @@ const useStylesSearchBox = makeStyles((theme) => ({
 
 const useStylesMultiRow = makeStyles((theme) => ({
     first: {
-        fontWeight: 600,
-        fontFamily: 'Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+        fontWeight: 400,
+        fontFamily: 'Inter , sans-serif',
         color: "black",
         fontSize: 14,
     },
@@ -159,6 +193,7 @@ const useStylesMultiRow = makeStyles((theme) => ({
 const rows = [
     {
         img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
         col1: 'Frozen yoghurt',
         col2: 159,
         col3: 6.0,
@@ -167,6 +202,7 @@ const rows = [
     },
     {
         img: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+        email: "josh.cooper@example.com",
         col1: 'Ice cream sandwich',
         col2: 237,
         col3: 9.0,
@@ -175,6 +211,7 @@ const rows = [
     },
     {
         img: "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+        email: "antonio.cooper@example.com",
         col1: 'Eclair',
         col2: 262,
         col3: 16.0,
@@ -183,6 +220,7 @@ const rows = [
     },
     {
         img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
         col1: 'Cupcake',
         col2: 305,
         col3: 3.7,
@@ -191,6 +229,286 @@ const rows = [
     },
     {
         img: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
+        email: "jane.cooper@example.com",
+        col1: 'Gingerbread',
+        col2: 356,
+        col3: 16.0,
+        col4: 49,
+        col5: 3.9
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Frozen yoghurt',
+        col2: 159,
+        col3: 6.0,
+        col4: 24,
+        col5: 4.0
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+        email: "josh.cooper@example.com",
+        col1: 'Ice cream sandwich',
+        col2: 237,
+        col3: 9.0,
+        col4: 37,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+        email: "antonio.cooper@example.com",
+        col1: 'Eclair',
+        col2: 262,
+        col3: 16.0,
+        col4: 24,
+        col5: 6.0
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Cupcake',
+        col2: 305,
+        col3: 3.7,
+        col4: 67,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
+        email: "jane.cooper@example.com",
+        col1: 'Gingerbread',
+        col2: 356,
+        col3: 16.0,
+        col4: 49,
+        col5: 3.9
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Frozen yoghurt',
+        col2: 159,
+        col3: 6.0,
+        col4: 24,
+        col5: 4.0
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+        email: "josh.cooper@example.com",
+        col1: 'Ice cream sandwich',
+        col2: 237,
+        col3: 9.0,
+        col4: 37,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+        email: "antonio.cooper@example.com",
+        col1: 'Eclair',
+        col2: 262,
+        col3: 16.0,
+        col4: 24,
+        col5: 6.0
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Cupcake',
+        col2: 305,
+        col3: 3.7,
+        col4: 67,
+        col5: 4.3
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Cupcake',
+        col2: 305,
+        col3: 3.7,
+        col4: 67,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
+        email: "jane.cooper@example.com",
+        col1: 'Gingerbread',
+        col2: 356,
+        col3: 16.0,
+        col4: 49,
+        col5: 3.9
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Frozen yoghurt',
+        col2: 159,
+        col3: 6.0,
+        col4: 24,
+        col5: 4.0
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+        email: "josh.cooper@example.com",
+        col1: 'Ice cream sandwich',
+        col2: 237,
+        col3: 9.0,
+        col4: 37,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+        email: "antonio.cooper@example.com",
+        col1: 'Eclair',
+        col2: 262,
+        col3: 16.0,
+        col4: 24,
+        col5: 6.0
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Cupcake',
+        col2: 305,
+        col3: 3.7,
+        col4: 67,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
+        email: "jane.cooper@example.com",
+        col1: 'Gingerbread',
+        col2: 356,
+        col3: 16.0,
+        col4: 49,
+        col5: 3.9
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Frozen yoghurt',
+        col2: 159,
+        col3: 6.0,
+        col4: 24,
+        col5: 4.0
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+        email: "josh.cooper@example.com",
+        col1: 'Ice cream sandwich',
+        col2: 237,
+        col3: 9.0,
+        col4: 37,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+        email: "antonio.cooper@example.com",
+        col1: 'Eclair',
+        col2: 262,
+        col3: 16.0,
+        col4: 24,
+        col5: 6.0
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Cupcake',
+        col2: 305,
+        col3: 3.7,
+        col4: 67,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
+        email: "jane.cooper@example.com",
+        col1: 'Gingerbread',
+        col2: 356,
+        col3: 16.0,
+        col4: 49,
+        col5: 3.9
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Frozen yoghurt',
+        col2: 159,
+        col3: 6.0,
+        col4: 24,
+        col5: 4.0
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+        email: "josh.cooper@example.com",
+        col1: 'Ice cream sandwich',
+        col2: 237,
+        col3: 9.0,
+        col4: 37,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+        email: "antonio.cooper@example.com",
+        col1: 'Eclair',
+        col2: 262,
+        col3: 16.0,
+        col4: 24,
+        col5: 6.0
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Cupcake',
+        col2: 305,
+        col3: 3.7,
+        col4: 67,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
+        email: "jane.cooper@example.com",
+        col1: 'Gingerbread',
+        col2: 356,
+        col3: 16.0,
+        col4: 49,
+        col5: 3.9
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Frozen yoghurt',
+        col2: 159,
+        col3: 6.0,
+        col4: 24,
+        col5: 4.0
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+        email: "josh.cooper@example.com",
+        col1: 'Ice cream sandwich',
+        col2: 237,
+        col3: 9.0,
+        col4: 37,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+        email: "antonio.cooper@example.com",
+        col1: 'Eclair',
+        col2: 262,
+        col3: 16.0,
+        col4: 24,
+        col5: 6.0
+    },
+    {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+        email: "jane.cooper@example.com",
+        col1: 'Cupcake',
+        col2: 305,
+        col3: 3.7,
+        col4: 67,
+        col5: 4.3
+    },
+    {
+        img: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
+        email: "jane.cooper@example.com",
         col1: 'Gingerbread',
         col2: 356,
         col3: 16.0,
@@ -278,6 +596,7 @@ function MyTable() {
     const [menuOpen, setMenuOpen] = React.useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [curSelectedUser, setCurSelectedUser] = useState(-1);
+    const [curPage, setCurPage] = useState(1);
 
     const [rowData, setRowData] = useState(rows);
 
@@ -312,138 +631,147 @@ function MyTable() {
     }
 
     return (
-        <Grid container>
-            <Grid item xs={12}>
-                <Toolbar className={classes.toolbar}>
-                    <div className={classes.tablecaption}>Caption</div>
-                    <Paper component="form" className={classes_search.root}>
+        <ThemeProvider theme={myTheme}>
+            <Grid container>
+                <Grid item xs={12}>
+                    <Toolbar className={classes.toolbar}>
+                        <div className={classes.tablecaption}>Caption</div>
+                        <Paper component="form" className={classes_search.root}>
 
-                        <InputBase
-                            className={classes_search.input}
-                            placeholder="Search "
-                            // value={searchTerm}
-                            inputProps={{'aria-label': 'search '}}
-                            onKeyDown={(e) => {
-                                setTimeout(function () {
-                                    setSearchTerm(e.target.value);
-                                }, 200);
-                            }}
-                        />
-                        <IconButton className={classes_search.iconButton} aria-label="search">
-                            <SearchIcon/>
-                        </IconButton>
-
-                    </Paper>
-                    <div className={classes.toolbarWrapper}>
-                        <Typography className={classes.navbar}>
-                            <Link href="#" className={selectedMenu == "week" ? classes.navbarSelected : ""}
-                                  onClick={(event) => {
-                                      toggelData(event, "week")
-                                  }}>
-                                Week
-                            </Link>
-                            <Link href="#" className={selectedMenu == "month" ? classes.navbarSelected : ""}
-                                  onClick={(event) => {
-                                      toggelData(event, "month")
-                                  }}>
-                                Month
-                            </Link>
-                            <Link href="#" className={selectedMenu == "year" ? classes.navbarSelected : ""}
-                                  onClick={(event) => {
-                                      toggelData(event, "year")
-                                  }}>
-                                Year
-                            </Link>
-                        </Typography>
-                        <div>
-                            <IconButton
-                                ref={anchorRef}
-                                aria-controls={menuOpen ? 'menu-list-grow' : undefined}
-                                aria-haspopup="true"
-                                onClick={handleMenuToggle}
-                                style={{
-                                    marginLeft: 5
+                            <InputBase
+                                className={classes_search.input}
+                                placeholder="Search "
+                                // value={searchTerm}
+                                inputProps={{'aria-label': 'search '}}
+                                onKeyDown={(e) => {
+                                    setTimeout(function () {
+                                        setSearchTerm(e.target.value);
+                                    }, 200);
                                 }}
-                                className={classes.menuIconButtion}
-                            >
-                                <MoreHorizIcon/>
+                            />
+                            <IconButton className={classes_search.iconButton} aria-label="search">
+                                <SearchIcon/>
                             </IconButton>
-                            <Popper open={menuOpen} anchorEl={anchorRef.current} role={undefined} transition className={classes.zIndexTop}
-                                    disablePortal>
-                                {({TransitionProps, placement}) => (
-                                    <Grow
-                                        {...TransitionProps}
-                                        style={{transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'}}
-                                    >
-                                        <Paper>
-                                            <ClickAwayListener onClickAway={handleMenuClose}>
-                                                <MenuList autoFocusItem={menuOpen} id="menu-list-grow">
-                                                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                                                    <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-                                                    <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-                                                </MenuList>
-                                            </ClickAwayListener>
-                                        </Paper>
-                                    </Grow>
-                                )}
-                            </Popper>
-                        </div>
-                    </div>
-                </Toolbar>
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="customized table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell className={classes.tableHeader}>Name</TableCell>
-                                <TableCell className={classes.tableHeader}>Column-2</TableCell>
-                                <TableCell className={classes.tableHeader} align="right">Column-3</TableCell>
-                                <TableCell className={classes.tableHeader} align="right">Column-4</TableCell>
-                                <TableCell className={classes.tableHeader} align="right">Column-5</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rowData.map((row, index) => (
-                                <StyledTableRow key={index}>
-                                    <StyledTableCell component="th" scope="row">
-                                        <Box display={"flex"}>
-                                            <img className={classes.roundedImage} src={row.img}/>
-                                            <MultiRowTD first={row.col1} second={"jane.cooper@example.com"}
-                                                        marginLeft={2}/>
-                                        </Box>
-                                    </StyledTableCell>
-                                    <StyledTableCell>
-                                        <MultiRowTD first={"Regional Paradigm Technician"} second={"Optimization"}
-                                                    marginLeft={0}/>
-                                    </StyledTableCell>
-                                    <StyledTableCell
-                                        align="right">{row.col2}</StyledTableCell>
-                                    <StyledTableCell
-                                        align="right">{row.col3}</StyledTableCell>
-                                    <StyledTableCell
-                                        align="right">
-                                        <IconButton onClick={()=>setCurSelectedUser(index)}>
-                                            <CreateIcon color={"primary"}/>
-                                        </IconButton>
-                                        <RowMoreIcon/>
-                                    </StyledTableCell>
-                                </StyledTableRow>
-                            ))}
-                        </TableBody>
 
-                    </Table>
-                    <div style={{textAlign: "right", padding: 10}}>
-                        <Pagination count={10} color="primary" style={{display: "inline-block"}}/>
-                    </div>
-                </TableContainer>
-                {curSelectedUser != -1 ?
-                    <DialogDetail
-                        closeDialog={closeDialog}
-                        rowData={rows}
-                        selected={curSelectedUser}
-                    />
-                    : ""}
+                        </Paper>
+                        <div className={classes.toolbarWrapper}>
+                            <Typography className={classes.navbar}>
+                                <Link href="#" className={selectedMenu == "week" ? classes.navbarSelected : ""}
+                                      onClick={(event) => {
+                                          toggelData(event, "week")
+                                      }}>
+                                    Week
+                                </Link>
+                                <Link href="#" className={selectedMenu == "month" ? classes.navbarSelected : ""}
+                                      onClick={(event) => {
+                                          toggelData(event, "month")
+                                      }}>
+                                    Month
+                                </Link>
+                                <Link href="#" className={selectedMenu == "year" ? classes.navbarSelected : ""}
+                                      onClick={(event) => {
+                                          toggelData(event, "year")
+                                      }}>
+                                    Year
+                                </Link>
+                            </Typography>
+                            <div>
+                                <IconButton
+                                    ref={anchorRef}
+                                    aria-controls={menuOpen ? 'menu-list-grow' : undefined}
+                                    aria-haspopup="true"
+                                    onClick={handleMenuToggle}
+                                    style={{
+                                        marginLeft: 5
+                                    }}
+                                    className={classes.menuIconButtion}
+                                >
+                                    <MoreHorizIcon/>
+                                </IconButton>
+                                <Popper open={menuOpen} anchorEl={anchorRef.current} role={undefined} transition
+                                        className={classes.zIndexTop}
+                                        disablePortal>
+                                    {({TransitionProps, placement}) => (
+                                        <Grow
+                                            {...TransitionProps}
+                                            style={{transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'}}
+                                        >
+                                            <Paper>
+                                                <ClickAwayListener onClickAway={handleMenuClose}>
+                                                    <MenuList autoFocusItem={menuOpen} id="menu-list-grow">
+                                                        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                                                        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+                                                        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+                                                    </MenuList>
+                                                </ClickAwayListener>
+                                            </Paper>
+                                        </Grow>
+                                    )}
+                                </Popper>
+                            </div>
+                        </div>
+                    </Toolbar>
+                    <TableContainer component={Paper}>
+                        <Table className={classes.table} aria-label="customized table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell className={classes.tableHeader}>Name</TableCell>
+                                    <TableCell className={classes.tableHeader}>Column-2</TableCell>
+                                    <TableCell className={classes.tableHeader} align="right">Column-3</TableCell>
+                                    <TableCell className={classes.tableHeader} align="right">Column-4</TableCell>
+                                    <TableCell className={classes.tableHeader} align="right">Column-5</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {rowData.slice(10 * (curPage - 1), 10 * (curPage) - 1).map((row, index) => (
+                                    <StyledTableRow key={index}>
+                                        <StyledTableCell component="th" scope="row">
+                                            <Box display={"flex"}>
+                                                <img className={classes.roundedImage} src={row.img}/>
+                                                <MultiRowTD first={row.col1} second={row.email}
+                                                            marginLeft={2}/>
+                                            </Box>
+                                        </StyledTableCell>
+                                        <StyledTableCell>
+                                            <MultiRowTD first={"Regional Paradigm Technician"} second={"Optimization"}
+                                                        marginLeft={0}/>
+                                        </StyledTableCell>
+                                        <StyledTableCell
+                                            align="right">{row.col2}</StyledTableCell>
+                                        <StyledTableCell
+                                            align="right">{row.col3}</StyledTableCell>
+                                        <StyledTableCell
+                                            align="right">
+                                            <IconButton onClick={() => setCurSelectedUser(index)}>
+                                                <CreateIcon color={"primary"}/>
+                                            </IconButton>
+                                            <RowMoreIcon/>
+                                        </StyledTableCell>
+                                    </StyledTableRow>
+                                ))}
+                            </TableBody>
+
+                        </Table>
+                        <div style={{textAlign: "right", padding: 10}}>
+                            <Pagination
+                                count={Math.ceil(rowData.length / 10)}
+                                page={curPage}
+                                onChange={(e, page) => {
+                                    setCurPage(page)
+                                }}
+                                color="primary" style={{display: "inline-block"}}/>
+                        </div>
+                    </TableContainer>
+                    {curSelectedUser != -1 ?
+                        <DialogDetail
+                            closeDialog={closeDialog}
+                            rowData={rows}
+                            selected={curSelectedUser}
+                        />
+                        : ""}
+                </Grid>
             </Grid>
-        </Grid>
+        </ThemeProvider>
     );
 }
 

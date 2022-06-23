@@ -19,6 +19,7 @@ function App() {
 
     const toggleMode = mode => {
         setCurMode(mode);
+
     }
 
     const classes = useStyles();

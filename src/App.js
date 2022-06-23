@@ -21,9 +21,6 @@ function App() {
         setCurMode(mode);
     }
 
-
-
-
     const classes = useStyles();
 
     return (

@@ -19,10 +19,9 @@ function App() {
 
     const toggleMode = mode => {
         setCurMode(mode);
-        console.log('aaa');
-        console.log('bbb');
-    }
+        console.log('ccc');
 
+    }
 
     const classes = useStyles();
 

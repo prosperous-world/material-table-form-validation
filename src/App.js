@@ -22,6 +22,7 @@ function App() {
         console.log('fffff');
         console.log('eeee');
         console.log('dddd');
+        console.log('ggggg');
 
     }
 

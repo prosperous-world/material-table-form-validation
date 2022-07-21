@@ -21,7 +21,7 @@ function App() {
         setCurMode(mode);
         console.log('');
         console.log('');
-        console.log('dddd');
+        console.log('');
         console.log('ggggg');
 
 

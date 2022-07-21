@@ -19,7 +19,7 @@ function App() {
 
     const toggleMode = mode => {
         setCurMode(mode);
-        console.log('fffff');
+        console.log('');
         console.log('eeee');
         console.log('dddd');
         console.log('ggggg');

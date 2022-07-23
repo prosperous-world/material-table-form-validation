@@ -19,6 +19,8 @@ function App() {
 
     const toggleMode = mode => {
         setCurMode(mode);
+        console.log("1111");
+        console.log('2222');
 
 
     }

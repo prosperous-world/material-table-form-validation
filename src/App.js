@@ -14,17 +14,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 function App() {
     const [curMode, setCurMode] = useState(1);
 
     const toggleMode = mode => {
         setCurMode(mode);
-        console.log("1111");
-        console.log('2222');
-        console.log('3333');
-        console.log('4444');
-
     }
 
     const classes = useStyles();
